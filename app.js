@@ -25,6 +25,10 @@ let app = express();
 app.set('port', (process.env.PORT || 8080));
 app.use(bodyParser.json({type: 'application/json'}));
 
+app.get('/', function (request, response) {
+  response.send('Running on 8080 and getting POST requests');
+});
+
 app.post('/', function (request, response) {
   console.log('handle post');
   const assistant = new ActionsSdkAssistant({request: request, response: response});
